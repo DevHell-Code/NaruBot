@@ -36,7 +36,10 @@ class Core(commands.Cog):
             '연락처',
             'Dev HellCode\n`froggal`(KeySpace)에게 연락: `Discord: froggal#2188` \n `Email: keyfroggal21k@hellcode.cf` \n `hyminkoo10`(Kongryeong)에게 연락: `Discord: Kongryeong#5252`\n `Email: kongryeong@hellcode.cf` \n ``'
         ))
-
-
+    # 초대 코드
+    @commands.command()
+   async def 초대(self, ctx):
+     invite = 'https://hellcode.cf'
+     await ctx.reply(embed=embed('초대 링크', f'{invite} 링크를 사용하세요.'))
 def setup(bot):
     bot.add_cog(Core(bot))
