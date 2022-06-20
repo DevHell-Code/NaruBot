@@ -38,8 +38,8 @@ class Core(commands.Cog):
         ))
     # 초대 코드
     @commands.command()
-   async def 초대(self, ctx):
-     invite = 'https://hellcode.cf'
-     await ctx.reply(embed=embed('초대 링크', f'{invite} 링크를 사용하세요.'))
+    async def 초대(self, ctx):
+        invite = 'https://hellcode.cf'
+        await ctx.reply(embed=embed('초대 링크', f'{invite} 링크를 사용하세요.'))
 def setup(bot):
     bot.add_cog(Core(bot))

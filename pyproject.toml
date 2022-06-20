@@ -12,6 +12,9 @@ discord = "^1.7.3"
 Flask = "^2.1.2"
 qrcode = "^7.3.1"
 replit = "^3.2.4"
+cryptocode = "^0.1"
+Pillow = "^9.1.1"
+bs4 = "^0.0.1"
 
 [tool.poetry.dev-dependencies]
 

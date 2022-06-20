@@ -5,8 +5,6 @@ import os
 import asyncio
 import random
 import re
-
-my_secret = os.environ['token-beta']
 from keep_alive import keep_alive
 
 
@@ -237,5 +235,5 @@ keep_alive()
 # token: 정식버전
 # token-beta: 배타버전
 # 수정: 옆의 자물쇠 클릭. .env임
-bot.run(os.getenv("token-beta"))
+bot.run(os.getenv("token"))
 # bot.run(os.getenv("token"))
