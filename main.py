@@ -19,7 +19,7 @@ def embed(title, description, color=random.randint(0x000000, 0xFFFFFF)):
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='$',
                    intents=intents,
-                   owner_ids=[906351533426356226, 712290125505363980])
+                   owner_ids=[906351533426356226, 712290125505363980, 740016886204334141])
 
 # 코그 로드
 for file in os.listdir("bot"):
