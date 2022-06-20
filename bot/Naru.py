@@ -11,9 +11,11 @@ import urllib
 import requests
 import time
 from bs4 import BeautifulSoup
+"""
 from discord_slash import SlashCommand
 from discord_slash import SlashContext
 from discord_slash.utils import manage_commands
+"""
 from discord.utils import get
 import re
 
@@ -71,6 +73,7 @@ class Naru(commands.Cog):
             embed.set_thumbnail(url=f"https://api.mcsrvstat.us/icon/{address}")
             embed.set_footer(text=f'{ctx.author} 님이 명령어를 사용함', icon_url=ctx.author.avatar_url)
             await ctx.reply(embed=embed)
+    """
     @slash.slash(
       name = 'status',
       options=[manage_commands.create_option(
@@ -130,6 +133,7 @@ class Naru(commands.Cog):
             embed.set_thumbnail(url=f"https://api.mcsrvstat.us/icon/{address}")
             embed.set_footer(text=f'{ctx.author} 님이 명령어를 사용함', icon_url=ctx.author.avatar_url)
             await ctx.reply(embed=embed)
+    """
     @commands.command()
     async def player(ctx, player):
         res = requests.get(f'https://minecraftuuid.com/?search={player}')
@@ -159,6 +163,7 @@ class Naru(commands.Cog):
         embed.add_field(name='Player Skull Command (equal or smaller than 1.12)', value=f"{command112.replace('playernamereplacespot',player)}", inline=False)
         embed.set_footer(text=f'{ctx.author} 님이 명령어를 사용함', icon_url=ctx.author.avatar_url)
         await ctx.reply(embed=embed)
+    """
     @slash.slash(
       name = 'player',
       options=[manage_commands.create_option(
@@ -197,7 +202,7 @@ class Naru(commands.Cog):
         embed.add_field(name='Player Skull Command (equal or smaller than 1.12)', value=f"{command112.replace('playernamereplacespot',playername)}", inline=False)
         embed.set_footer(text=f'{ctx.author} 님이 명령어를 사용함', icon_url=ctx.author.avatar_url)
         await ctx.reply(embed=embed)
-    
+    """
     @commands.command()
     async def tetrio(ctx,player):
         maker=requests.get(f"https://ch.tetr.io/api/users/{player}/")
@@ -248,7 +253,7 @@ class Naru(commands.Cog):
         embed.set_thumbnail(url=f"https://tetr.io/user-content/avatars/{__id}.jpg")
         embed.set_footer(text=f'{ctx.author} 님이 명령어를 사용함', icon_url=ctx.author.avatar_url)
         await ctx.reply(embed=embed)
-    
+    """
     @slash.slash(
       name = 'tetrio',
       options=[manage_commands.create_option(
@@ -307,6 +312,6 @@ class Naru(commands.Cog):
         embed.set_thumbnail(url=f"https://tetr.io/user-content/avatars/{__id}.jpg")
         embed.set_footer(text=f'{ctx.author} 님이 명령어를 사용함', icon_url=ctx.author.avatar_url)
         await ctx.reply(embed=embed)
-
+        """
 def setup(bot):
     bot.add_cog(Naru(bot))
