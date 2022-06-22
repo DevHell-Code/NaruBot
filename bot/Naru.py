@@ -1,8 +1,5 @@
 import discord
 from discord.ext import commands
-from discord_slash import SlashCommand
-from discord_slash import SlashContext
-from discord_slash.utils import manage_commands
 import random
 import asyncio
 import os
@@ -22,9 +19,9 @@ import re
 class Naru(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        slash = SlashCommand(bot, sync_commands=True)
+        #slash = SlashCommand(bot, sync_commands=True)
     @commands.command()
-    async def status(ctx,address):
+    async def status(self,ctx,address):
         maker=requests.get(f"https://api.mcsrvstat.us/2/{address}")
         output=maker.json()
         if output["online"] is not True:
@@ -135,7 +132,7 @@ class Naru(commands.Cog):
             await ctx.reply(embed=embed)
     """
     @commands.command()
-    async def player(ctx, player):
+    async def player(self,ctx, player):
         res = requests.get(f'https://minecraftuuid.com/?search={player}')
         soup = BeautifulSoup(res.content, 'html.parser')
         uuid = soup.findAll("input","Form-Control")
@@ -204,7 +201,7 @@ class Naru(commands.Cog):
         await ctx.reply(embed=embed)
     """
     @commands.command()
-    async def tetrio(ctx,player):
+    async def tetrio(self,ctx,player):
         maker=requests.get(f"https://ch.tetr.io/api/users/{player}/")
         output=maker.json()
         if output["success"] is False:
