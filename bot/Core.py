@@ -39,7 +39,13 @@ class Core(commands.Cog):
     # 초대 코드
     @commands.command()
     async def 초대(self, ctx):
-        invite = 'https://hellcode.cf'
+        invite = 'https://hellcode.cf/naru'
         await ctx.reply(embed=embed('초대 링크', f'{invite} 링크를 사용하세요.'))
+
+    # 서버 상태 확인
+    @commands.command()
+    async def 서버상태(self, ctx):
+      uptime = 'https://LaruBot.milky2110.repl.co' 
+      await ctx.reply(embed=embed('서버 상태 확인', f'{uptime} 링크를 확인하세요.'))
 def setup(bot):
     bot.add_cog(Core(bot))

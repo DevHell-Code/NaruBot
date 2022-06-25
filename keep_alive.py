@@ -1,18 +1,29 @@
-from flask import Flask
 from threading import Thread
-from random import randint
+from flask import Flask,request,render_template,session,redirect
+from oauth import Oauth
 
-app = Flask('')
+app = Flask(__name__)
+app.config["SECRET_KEY"] = "PRIVATE"
 
-
-@app.route('/')
+@app.route("/")
 def home():
-    return 'Running Bot...'
+    return "test"
 
+@app.route("/login")
+def login():
+    code = request.args.get("code")
+    app.logger.info(code)
+    at = Oauth.get_access_token(code)
+    session["token"] = at
+
+    user = Oauth.get_user_json(at)
+    user_name, user_id = user.get("username"), user.get("discriminator")
+    print("웨안됌")
+    print(user_name)
+    return "hello"
 
 def run():
-    app.run(host='0.0.0.0', port=randint(2000, 9000))
-
+    app.run(host='0.0.0.0', port=80)
 
 def keep_alive():
     t = Thread(target=run)
