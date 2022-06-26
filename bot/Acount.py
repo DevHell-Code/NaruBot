@@ -70,7 +70,7 @@ class Acount(commands.Cog):
         }
         db["account"] = acdb
         await ctx.reply(embed=embed(
-            "가입 완료", f'가입이 완료되었습니다. {self.bot.user.name}(이)를 이용해주셔서 감사합니다, {ctx.author}님.'))
+            "가입 완료", f'가입이 완료되었습니다. {self.bot.user.name}를 이용해주셔서 감사합니다, {ctx.author}님.'))
 
 
 def setup(bot):
