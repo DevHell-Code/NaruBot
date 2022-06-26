@@ -21,19 +21,26 @@ class Calculator(commands.Cog):
         data = math.sin(annum)
         await ctx.reply(embed=embed('삼각함수 in 사인', f'{annum}의 사인 값은 {data}입니다.'))
 
-    #코사인
+    # 코사인
     @commands.command()
     async def 코사인(self, ctx, annum: int):
         data = math.cos(annum)
         await ctx.reply(
             embed=embed('삼각함수 in 코사인', f'{annum}의 코사인 값은 {data}입니다.'))
 
-    #코사인
+    # 탄젠트
     @commands.command()
     async def 탄젠트(self, ctx, annum: int):
         data = math.tan(annum)
         await ctx.reply(
             embed=embed('삼각함수 in 탄젠트', f'{annum}의 탄젠트 값은 {data}입니다.'))
+    # 여러가지 뻘기능
+
+    # 파이
+    @commands.command()
+    async def 파이(self, ctx):
+      data = math.pi
+      await ctx.reply(embed=embed('파이', f'Python의 Math 모듈에서 구할 수 있는 최대 파이 값입니다: \n {data} '))
 
     # 사칙연산
     @commands.command()
