@@ -6,6 +6,12 @@ import asyncio
 import random
 import re
 from keep_alive import keep_alive
+from pretty_help import DefaultMenu, PrettyHelp
+try:
+    from discord_slash import SlashCommand
+except ImportError:
+    os.system("pip install -U git+https://github.com/interactions-py/library@legacy")
+    from discord_slash import SlashCommand
 
 # 임배드 함수
 def embed(title, description, color=random.randint(0x000000, 0xFFFFFF)):
@@ -17,6 +23,9 @@ intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='$',
                    intents=intents,
                    owner_ids=[906351533426356226, 712290125505363980, 740016886204334141])
+menu = DefaultMenu('◀️', '▶️', '❌')
+bot.help_command = PrettyHelp(navigation=menu, color=random.randint(0x000000,0xFFFFFF)) 
+slash = SlashCommand(bot, sync_commands=True, sync_on_cog_reload=True)
 
 # 코그 로드
 for file in os.listdir("bot"):
@@ -228,11 +237,5 @@ async def load(ctx, module="all"):
                                     "모듈 이름을 다시 확인 해 주세요"))
 
 
-# Keep alive 서버 on
 keep_alive()
-# 토큰 이용 봇 구동
-# token: 정식버전
-# token-beta: 배타버전
-# 수정: 옆의 자물쇠 클릭. .env임
 bot.run(os.getenv("token"))
-# bot.run(os.getenv("token"))

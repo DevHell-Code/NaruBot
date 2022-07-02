@@ -6,6 +6,7 @@ import random
 import qrcode
 from PIL import Image
 import requests
+from discord_slash import cog_ext, SlashCommand,SlashContext
 import time
 
 
@@ -17,6 +18,15 @@ def embed(title, description, color=random.randint(0x000000, 0xFFFFFF)):
 class Convenience(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        if not hasattr(bot, "slash"):
+            bot.slash = SlashCommand(
+                bot,
+                auto_register=True,
+                override_type=True,
+                auto_delete=True,
+            )
+
+        self.bot.slash.get_cog_commands(self)
 
     @commands.command()
     async def qrcode(self, ctx, *, link):
@@ -48,6 +58,25 @@ class Convenience(commands.Cog):
         embed.add_field(name="단축 링크", value=f'{output}', inline=False)
         embed.set_footer(text=f"{ctx.author}", icon_url=ctx.author.avatar_url)
         await ctx.reply(embed=embed)
+    @cog_ext.cog_slash(name="링크단축")
+    async def _링크단축(self,ctx:SlashContext,link):
+        target = link
+        client_id = os.getenv("client_id")
+        client_secret = os.getenv("client_secret")
+        header = {
+            'X-Naver-Client-Id': client_id,
+            'X-Naver-Client-Secret': client_secret
+        }
+        naver = 'https://openapi.naver.com/v1/util/shorturl'
+        data = {'url': target}
+        maker = requests.post(url=naver, data=data, headers=header)
+        maker.close()
+        output = maker.json()['result']['url']
+        embed = discord.Embed(title="URL 단축기능",
+                              color=random.randint(0x000000, 0xFFFFFF))
+        embed.add_field(name="단축 링크", value=f'{output}', inline=False)
+        embed.set_footer(text=f"{ctx.author}", icon_url=ctx.author.avatar_url)
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Convenience(bot))
