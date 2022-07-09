@@ -8,7 +8,6 @@ import urllib
 import requests
 import time
 from bs4 import BeautifulSoup
-from discord_slash import SlashContext,SlashCommand,cog_ext
 """
 from discord_slash import SlashCommand
 from discord_slash import SlashContext
@@ -20,15 +19,7 @@ import re
 class Naru(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        if not hasattr(bot, "slash"):
-            bot.slash = SlashCommand(
-                bot,
-                auto_register=True,
-                override_type=True,
-                auto_delete=True,
-            )
-
-        self.bot.slash.get_cog_commands(self)
+        #slash = SlashCommand(bot, sync_commands=True)
     @commands.command()
     async def status(self,ctx,address):
         maker=requests.get(f"https://api.mcsrvstat.us/2/{address}")
