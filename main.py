@@ -13,6 +13,7 @@ except ImportError:
     os.system("pip install -U git+https://github.com/interactions-py/library@legacy")
     from discord_slash import SlashCommand
 
+
 # 임배드 함수
 def embed(title, description, color=random.randint(0x000000, 0xFFFFFF)):
     return discord.Embed(title=title, description=description, color=color)
@@ -20,11 +21,13 @@ def embed(title, description, color=random.randint(0x000000, 0xFFFFFF)):
 
 # 봇 변수 설정
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix='$',
-                   intents=intents,
-                   owner_ids=[906351533426356226, 712290125505363980, 740016886204334141])
+bot = commands.Bot(
+    command_prefix='$',
+    intents=intents,
+    owner_ids=[906351533426356226, 712290125505363980, 740016886204334141])
 menu = DefaultMenu('◀️', '▶️', '❌')
-bot.help_command = PrettyHelp(navigation=menu, color=random.randint(0x000000,0xFFFFFF)) 
+bot.help_command = PrettyHelp(navigation=menu,
+                              color=random.randint(0x000000, 0xFFFFFF))
 slash = SlashCommand(bot, sync_commands=True, sync_on_cog_reload=True)
 
 # 코그 로드

@@ -48,9 +48,9 @@ class Manage(commands.Cog):
             except:
                 await ctx.reply(embed=embed("삭제 실패","http://hellcode.cf 를 이용해 메시지 관리 권한과 함께 초대해주세요!",discord.Color.red()))
             if amount == 999999999999999999999:
-                await ctx.reply(embed=embed("삭제 완료","이 채널에 있는 모든 메시지 (매우 오래된 메시지 제외)가 삭제되었습니다!",discord.Color.green()))
+                await ctx.send(embed=embed("삭제 완료","이 채널에 있는 모든 메시지 (매우 오래된 메시지 제외)가 삭제되었습니다!",discord.Color.green()))
             else:
-                await ctx.reply(embed=embed("삭제 완료",f"{amount}개의 메시지가 삭제되었습니다!",discord.Color.green()))
+                await ctx.send(embed=embed("삭제 완료",f"{amount}개의 메시지가 삭제되었습니다!",discord.Color.green()))
         else:
             await ctx.reply(embed=embed("삭제 실패",'메시지 관리권한이 없습니다!',discord.Color.red()))
     @cog_ext.cog_slash(name='청소')
