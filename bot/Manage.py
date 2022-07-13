@@ -37,7 +37,7 @@ class Manage(commands.Cog):
                 override_type=True,
                 auto_delete=True,
             )
-
+  
         self.bot.slash.get_cog_commands(self)
     @commands.command()
     async def 청소(self, ctx, *, amount=999999999999999999999):
@@ -136,5 +136,6 @@ class Manage(commands.Cog):
             await ctx.send(embed=embed("언밴 성공",f"{user}님을 언밴 했어요!",discord.Color.green()))
         else:
             await ctx.send(embed=embed("언밴 실패","필수 요구사항인 **멤버 밴**권한이 없습니다!",discord.Color.red()))
+          
 def setup(bot):
     bot.add_cog(Manage(bot))

@@ -23,7 +23,7 @@ intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='$',
                    intents=intents,
                    owner_ids=[906351533426356226, 712290125505363980, 740016886204334141])
-menu = DefaultMenu('◀️', '▶️', '❌')
+menu = DefaultMenu('◀️', '▶️', 'X')
 bot.help_command = PrettyHelp(navigation=menu, color=random.randint(0x000000,0xFFFFFF)) 
 slash = SlashCommand(bot, sync_commands=True, sync_on_cog_reload=True)
 
