@@ -34,7 +34,7 @@ class Dict(commands.Cog):
         result = requests.get(data,verify=False).json()["channel"]
         definition = result['item'][0]['sense']['definition']
         pos = result["item"][0]['pos']
-        await ctx.send(embed=embed(f"{search} [{pos}] 의 대한 검색결과",f"{definition}"))
+        await ctx.send(embed=embed(f"{search} [{pos}] 에 대한 검색결과",f"{definition}"))
     @cog_ext.cog_slash(name="국어사전")
     async def _국어사전(self, ctx:SlashContext, search):
         kodict = os.getenv("kodict")
@@ -42,6 +42,6 @@ class Dict(commands.Cog):
         result = requests.get(data,verify=False).json()["channel"]
         definition = result['item'][0]['sense']['definition']
         pos = result["item"][0]['pos']
-        await ctx.send(embed=embed(f"{search} [{pos}] 의 대한 검색결과",f"{definition}"))
+        await ctx.send(embed=embed(f"{search} [{pos}] 에 대한 검색결과",f"{definition}"))
 def setup(bot):
     bot.add_cog(Dict(bot))
