@@ -16,7 +16,7 @@ from discord_slash.utils import manage_commands
 from discord.utils import get
 import re
 
-class Naru(commands.Cog):
+class GameInfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         #slash = SlashCommand(bot, sync_commands=True)
@@ -311,4 +311,4 @@ class Naru(commands.Cog):
         await ctx.reply(embed=embed)
         """
 def setup(bot):
-    bot.add_cog(Naru(bot))
+    bot.add_cog(GameInfo(bot))

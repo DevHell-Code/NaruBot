@@ -3,6 +3,7 @@ from discord.ext import commands
 import random
 from baekjoon import boj
 from baekjoon import solvedac
+from baekjoon import problem
 
 # https://github.com/smartwe/baekjoon-api
 
@@ -25,6 +26,6 @@ class Boj(commands.Cog):
     @commands.command()
     async def 솔브닥(self, ctx, name):
       await ctx.reply(embed=embed('Solved.ac Profile', f'티어: {solvedac.get_tier(name)} \n AC RATING: {solvedac.get_ac_rating(name)} \n exp: {solvedac.get_exp(name)} \n 랭크: {solvedac.get_rank(name)}'))
-
+  
 def setup(bot):
     bot.add_cog(Boj(bot))
